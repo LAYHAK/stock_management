@@ -5,6 +5,7 @@ public class Product {
     private String name;
     private int quantity;
     private double unitPrice;
+    public Product(){}
 
     // Constructor
     public Product(String id, String name, int quantity, double unitPrice) {

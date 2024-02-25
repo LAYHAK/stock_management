@@ -1,11 +1,11 @@
 package Model;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
-import org.nocrala.tools.texttablefmt.Table;
 
 public class ProductDAO {
-    private final String fileName = "products.CSV";
+    private final String fileName = "dataSource.CSV";
 
     public void addProduct(Product product) throws IOException {
         BufferedWriter bw = new BufferedWriter(new FileWriter(fileName, true));
@@ -14,7 +14,7 @@ public class ProductDAO {
         bw.close();
     }
 
-    public List<Product> readAllProducts() throws IOException {
+    public List<Product> readAllTransaction() throws IOException {
         List<Product> products = new ArrayList<>();
         BufferedReader br = new BufferedReader(new FileReader(fileName));
         String line;
@@ -23,8 +23,6 @@ public class ProductDAO {
             Product product = new Product(productDetails[0], productDetails[1], Integer.parseInt(productDetails[2]), Double.parseDouble(productDetails[3]));
             products.add(product);
         }
-
-
         br.close();
         return products;
     }
