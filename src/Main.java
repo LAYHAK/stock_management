@@ -46,6 +46,12 @@ public class Main {
                     System.out.print("No Option");
                 }
             }
+
+
+            System.out.println(
+                    "Hello Layhak Bekk bekk"
+            );
+
         }
 //        productController.displayProducts(10);
         // Create a Table instance for product and make it colorful
