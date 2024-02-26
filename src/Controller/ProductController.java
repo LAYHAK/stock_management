@@ -1,5 +1,6 @@
 package Controller;
 
+import Model.Product;
 import Model.ProductDAO;
 import Model.ProductGenerator;
 import View.ProductView;
@@ -7,6 +8,7 @@ import service.Service;
 import service.ServiceImp;
 
 import java.io.IOException;
+import java.util.List;
 
 public class ProductController {
     private final ProductDAO productDao = new ProductDAO();
@@ -23,6 +25,8 @@ public class ProductController {
     }
 
     public void displayTransaction() {
+
+
         try {
             productView.displayProducts(productDao.readAllTransaction());
         } catch (IOException e) {

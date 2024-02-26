@@ -48,10 +48,6 @@ public class Main {
             }
 
 
-            System.out.println(
-                    "Hello Layhak Bekk bekk"
-            );
-
         }
 //        productController.displayProducts(10);
         // Create a Table instance for product and make it colorful

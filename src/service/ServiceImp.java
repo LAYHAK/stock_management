@@ -3,6 +3,7 @@ package service;
 import Model.Product;
 
 import java.io.*;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
@@ -147,7 +148,7 @@ public class ServiceImp implements Service {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] productDetails = line.split(",");
-                Product product = new Product(productDetails[0], productDetails[1], Integer.parseInt(productDetails[2]), Double.parseDouble(productDetails[3]));
+                Product product = new Product(productDetails[0], productDetails[1], Integer.parseInt(productDetails[2]), Double.parseDouble(productDetails[3]), LocalDate.now());
                 products.add(product);
             }
         } catch (Exception e) {
