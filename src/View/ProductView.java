@@ -17,14 +17,17 @@ public class ProductView {
     private final Scanner scanner = new Scanner(System.in);
 
 
-    public void displayProducts(List<Product> products) {
+    public void displayProducts(List<Product> products, int rowPerPage, int currentPage) {
+        int size = products.size();
+        int startIndex = (currentPage - 1) * rowPerPage;
+        int endIndex = Math.min(startIndex + rowPerPage, size);
         Table productTable = new Table(4);
         productTable.addCell("ID");
         productTable.addCell("Name");
         productTable.addCell("Quantity");
         productTable.addCell("Unit Price");
         ListIterator<Product> productIterator = products.listIterator();
-        while (productIterator.hasNext()) {
+        for (int i = startIndex; i < endIndex; ++i) {
             Product product = productIterator.next();
             productTable.addCell(product.getId());
             productTable.addCell(product.getName());
@@ -32,6 +35,11 @@ public class ProductView {
             productTable.addCell(String.format("%.2f", product.getUnitPrice()));
         }
         System.out.println(ANSI_BLUE + productTable.render() + ANSI_RESET);
+        Table table = new Table(2, BorderStyle.DESIGN_CURTAIN, ShownBorders.HEADER_ONLY);
+        int totalPages = (int) Math.ceil((double) size / rowPerPage);
+        table.addCell("  Page : %d of %s".formatted(currentPage, totalPages + " ".repeat(65)));
+        table.addCell("Total Record : %d".formatted(size));
+        System.out.println(table.render());
     }
 
 
